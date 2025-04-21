@@ -3,7 +3,6 @@ package com.bruno.helpdesk.domain;
 import com.bruno.helpdesk.enums.PerfilEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-public abstract class PessoaDomain implements Serializable {
+public abstract class Pessoa implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -43,12 +42,12 @@ public abstract class PessoaDomain implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
 
-    public PessoaDomain() {
+    public Pessoa() {
         super();
         addPerfil(PerfilEnum.CLIENTE);
     }
 
-    public PessoaDomain(Integer id, String nome, String cpf, String email, String senha) {
+    public Pessoa(Integer id, String nome, String cpf, String email, String senha) {
         super();
         this.id = id;
         this.nome = nome;
@@ -70,7 +69,7 @@ public abstract class PessoaDomain implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PessoaDomain that = (PessoaDomain) o;
+        Pessoa that = (Pessoa) o;
         return Objects.equals(id, that.id) && Objects.equals(cpf, that.cpf);
     }
 

@@ -14,21 +14,22 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class ClienteDomain extends PessoaDomain  implements Serializable {
+public class Tecnico extends Pessoa implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @OneToMany(mappedBy = "cliente")
-    private List<ChamadoDomain> chamados = new ArrayList<>();
+    @OneToMany(mappedBy = "tecnico")
+    private List<Chamado> chamados = new ArrayList<>();
 
-    public ClienteDomain() {
+    public Tecnico() {
         super();
-        addPerfil(PerfilEnum.CLIENTE);
+        addPerfil(PerfilEnum.TECNICO);
     }
 
-    public ClienteDomain(Integer id, String nome, String cpf, String email, String senha) {
+    public Tecnico(Integer id, String nome, String cpf, String email, String senha) {
         super(id, nome, cpf, email, senha);
-        addPerfil(PerfilEnum.CLIENTE);
+        addPerfil(PerfilEnum.TECNICO);
     }
+
 }

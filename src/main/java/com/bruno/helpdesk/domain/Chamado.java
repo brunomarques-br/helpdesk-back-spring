@@ -4,7 +4,6 @@ import com.bruno.helpdesk.enums.PrioridadeEnum;
 import com.bruno.helpdesk.enums.StatusEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +15,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-public class ChamadoDomain implements Serializable {
+public class Chamado implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -41,17 +40,17 @@ public class ChamadoDomain implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "tecnico_id")
-    private TecnicoDomain tecnico;
+    private Tecnico tecnico;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private ClienteDomain cliente;
+    private Cliente cliente;
 
-    public ChamadoDomain() {
+    public Chamado() {
         super();
     }
 
-    public ChamadoDomain(Integer id, PrioridadeEnum prioridade, StatusEnum status, String titulo, String observacoes, TecnicoDomain tecnico, ClienteDomain cliente) {
+    public Chamado(Integer id, PrioridadeEnum prioridade, StatusEnum status, String titulo, String observacoes, Tecnico tecnico, Cliente cliente) {
         super();
         this.id = id;
         this.prioridade = prioridade;
@@ -66,7 +65,7 @@ public class ChamadoDomain implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ChamadoDomain that = (ChamadoDomain) o;
+        Chamado that = (Chamado) o;
         return Objects.equals(id, that.id);
     }
 
